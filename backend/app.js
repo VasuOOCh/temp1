@@ -7,6 +7,9 @@ import cookieParser from "cookie-parser";
 import WebSocket, { WebSocketServer } from 'ws';
 import jwt from "jsonwebtoken"
 
+// Router : 
+import authRouter from "./routes/authRoute.js"
+
 // used to read the cookies
 app.use(cookieParser())
 dotenv.config()
@@ -23,12 +26,14 @@ main()
 .then(() => console.log("DB connected"))
 .catch(err => console.log(err))
 
+app.use("/api/auth", authRouter)
+
 // app.use(cors({
 //     origin : process.env.CLIENT_URL,
 //     credentials : true
 //   }))
 
-// this is the error handling middleware
+// this is the next error handling middleware
 
 app.use((err,req,res,next) => {
     console.log( "|| Error is : ", err);
