@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 
 async function main() {
-    await mongoose.connect('mongodb+srv://vasu2005choudhari:QYsEd3N4HuSKmHGs@temp0.w446jl9.mongodb.net/?retryWrites=true&w=majority&appName=temp0');
+    await mongoose.connect(process.env.MONGODB_URI);
 }
 
 main()
